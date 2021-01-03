@@ -7,6 +7,7 @@ import MoreVertIcon from '@material-ui/icons/MoreVert'
 import Avatar from '@material-ui/core/Avatar'
 import Input from '@material-ui/core/Input'
 import { SearchOutlined } from '@material-ui/icons'
+import SidebarChat from './SidebarChat'
 
 const Sidebar = () => {
   return (
@@ -30,6 +31,11 @@ const Sidebar = () => {
           <SearchOutlined />
           <input type='text' placeholder='Search or start a new char' />
         </div>
+      </div>
+      <div className='sidebar__chats'>
+        <SidebarChat />
+        <SidebarChat />
+        <SidebarChat />
       </div>
     </div>
   )
