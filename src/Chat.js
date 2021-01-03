@@ -6,13 +6,13 @@ import MicIcon from '@material-ui/icons/Mic'
 import InsertEmoticonIcon from '@material-ui/icons/InsertEmoticon'
 import './Chat.css'
 
-function Chat() {
+function Chat({ messages }) {
   return (
     <div className='chat'>
       <div className='chat__header'>
         <Avatar />
         <div className='chat__headerInfo'>
-          <h3>Room name</h3>
+          <h3></h3>
           <p>last seen..</p>
         </div>
 
@@ -28,28 +28,19 @@ function Chat() {
           </IconButton>
         </div>
       </div>
+
       <div className='chat__body'>
-        <div className='chat__message '>
-          <p>
-            <span className='chat__name'>Bahtti</span>
-            this would be a message
-            <span className='chat__timestamp'>{new Date().toUTCString()}</span>
-          </p>
-        </div>
-        <div className='chat__message chat__receiver'>
-          <p>
-            <span className='chat__name'>Bahtti</span>
-            this would be a message
-            <span className='chat__timestamp'>{new Date().toUTCString()}</span>
-          </p>
-        </div>
-        <div className=' chat__message'>
-          <p>
-            <span className='chat__name'>Bahtti</span>
-            this would be a message
-            <span className='chat__timestamp'>{new Date().toUTCString()}</span>
-          </p>
-        </div>
+        {messages.map((message) => (
+          <div
+            className={`chat__message  ${message.received && 'chat__receiver'}`}
+          >
+            <p>
+              <span className='chat__name'>{message.name}</span>
+              {message.message}
+              <span className='chat__timestamp'>{message.created_at}</span>
+            </p>
+          </div>
+        ))}
       </div>
       <div className='chat__footer'>
         <InsertEmoticonIcon />
